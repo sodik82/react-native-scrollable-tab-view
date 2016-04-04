@@ -10,9 +10,13 @@ import ScrollableTabView, { DefaultTabBar, ScrollableTabBar, } from 'react-nativ
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const FacebookTabsExample = React.createClass({
+  getInitialState() {
+    return { page : 1};
+  },
+
   render() {
     return <View style={styles.container}>
-      <ScrollableTabView initialPage={1} renderTabBar={() => <FacebookTabBar />}>
+      <ScrollableTabView initialPage={this.state.page} onChangeTab={ev => this.setState({page: ev.i})} renderTabBar={() => <FacebookTabBar />}>
         <ScrollView tabLabel="ios-paper" style={styles.tabView}>
           <View style={styles.card}>
             <Text>News</Text>
